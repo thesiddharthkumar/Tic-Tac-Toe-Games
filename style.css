@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,html {
+    width: 100%;
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0b6291;
+}
+#startbtn {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+#startbtn:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+#startbtn:active {
+    color: #000
+}
+
+#startbtn:active:after {
+    background: transparent;
+}
+
+#startbtn:hover:before {
+    opacity: 1;
+}
+
+#startbtn:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+.gamecontent{
+    display: none;
+    text-align: center;
+    position: relative;
+    padding: 10px;
+}
+
+.gamecontent h1 {
+    color: #f0f0f0;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+.board {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    border: 2px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 10px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cell:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.cell.x{
+    color: #083D68;
+    animation: fadeIn 0.5s ease;
+}
+.cell.o{
+    color: #0396AE;
+    animation: fadeIn 0.5s ease;
+}
+
+.status {
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    color: #000;
+}
+
+button:hover {
+    background-color: #000;
+    color: #fff;
+    transform: scale(1.1);
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
